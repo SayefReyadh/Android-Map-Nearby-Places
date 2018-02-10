@@ -46,7 +46,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Location lastlocation;
     private Marker currentLocationmMarker;
     public static final int REQUEST_LOCATION_CODE = 99;
-    int PROXIMITY_RADIUS = 1000;
+    int PROXIMITY_RADIUS = 1000; /// within 1 kilo meter
     double latitude,longitude;
 
     @Override
@@ -148,7 +148,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         switch(v.getId())
         {
-
             case R.id.hospital_nearby_button:
                 mMap.clear();
                 String hospital = "hospital";
