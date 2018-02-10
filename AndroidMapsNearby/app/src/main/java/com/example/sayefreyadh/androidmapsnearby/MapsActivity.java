@@ -46,7 +46,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Location lastlocation;
     private Marker currentLocationmMarker;
     public static final int REQUEST_LOCATION_CODE = 99;
-    int PROXIMITY_RADIUS = 10000;
+    int PROXIMITY_RADIUS = 1000;
     double latitude,longitude;
 
     @Override
@@ -133,7 +133,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
         currentLocationmMarker = mMap.addMarker(markerOptions);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomBy(10));
+        mMap.animateCamera(CameraUpdateFactory.zoomBy(20));
 
         if(client != null)
         {
@@ -148,8 +148,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         switch(v.getId())
         {
-            case R.id.B_search:
-                EditText tf_location =  findViewById(R.id.TF_location);
+            case R.id.search_nearby_button:
+                EditText tf_location =  findViewById(R.id.location_text_field);
                 String location = tf_location.getText().toString();
                 List<Address> addressList;
 
@@ -171,7 +171,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 markerOptions.title(location);
                                 mMap.addMarker(markerOptions);
                                 mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                                mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
+                                mMap.animateCamera(CameraUpdateFactory.zoomTo(20));
                             }
                         }
                     } catch (IOException e) {
@@ -179,7 +179,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     }
                 }
                 break;
-            case R.id.B_hopistals:
+            case R.id.hospital_nearby_button:
                 mMap.clear();
                 String hospital = "hospital";
                 String url = getUrl(latitude, longitude, hospital);
@@ -191,40 +191,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 break;
 
 
-            case R.id.B_schools:
+            case R.id.pharmacy_nearby_button:
                 mMap.clear();
-                String school = "school";
-                url = getUrl(latitude, longitude, school);
+                String pharmacy = "pharmacy";
+                url = getUrl(latitude, longitude, pharmacy);
                 dataTransfer[0] = mMap;
                 dataTransfer[1] = url;
 
                 getNearbyPlacesData.execute(dataTransfer);
-                Toast.makeText(MapsActivity.this, "Showing Nearby Schools", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MapsActivity.this, "Showing Nearby Pharmacy", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.B_restaurants:
-                mMap.clear();
-                String resturant = "restuarant";
-                url = getUrl(latitude, longitude, resturant);
-                dataTransfer[0] = mMap;
-                dataTransfer[1] = url;
 
-                getNearbyPlacesData.execute(dataTransfer);
-                Toast.makeText(MapsActivity.this, "Showing Nearby Restaurants", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.B_to:
         }
     }
 
 
     private String getUrl(double latitude , double longitude , String nearbyPlace)
     {
-
+        /// visit this website shaafi
+        /// https://developers.google.com/places/web-service/
         StringBuilder googlePlaceUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
         googlePlaceUrl.append("location="+latitude+","+longitude);
         googlePlaceUrl.append("&radius="+PROXIMITY_RADIUS);
         googlePlaceUrl.append("&type="+nearbyPlace);
         googlePlaceUrl.append("&sensor=true");
-        googlePlaceUrl.append("&key="+"AIzaSyBLEPBRfw7sMb73Mr88L91Jqh3tuE4mKsE");
+        googlePlaceUrl.append("&key="+"AIzaSyCs5EEepE-C2ZbRNcaAUrfHQ5XAo0LKyUo");
 
         Log.d("MapsActivity", "url = "+googlePlaceUrl.toString());
 
