@@ -3,27 +3,8 @@
 
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_height="match_parent">
-
-<EditText
-    android:id="@+id/location_text_field"
-    android:layout_width="290dp"
-    android:layout_height="45dp"
-    android:ems="10"
-    android:inputType="textPersonName"
-    android:text=""
-    android:layout_alignParentTop="true"
-    android:layout_alignParentStart="true" />
-
-<Button
-    android:id="@+id/search_nearby_button"
-    android:layout_width="100dp"
-    android:layout_height="45dp"
-    android:layout_alignParentTop="true"
-    android:layout_toEndOf="@+id/location_text_field"
-    android:onClick="onClick"
-    android:text="Search" />
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent">
 
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
@@ -38,36 +19,35 @@ android:layout_height="match_parent">
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/button_nearby_layout" />
 
-<LinearLayout
-    android:layout_below="@+id/location_text_field"
-    android:id="@+id/button_nearby_layout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:weightSum="2"
-    tools:ignore="InvalidId">
-
-    <Button
-        android:layout_weight="1"
-        android:id="@+id/hospital_nearby_button"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/button_nearby_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/location_text_field"
-        android:onClick="onClick"
-        android:text="Hospitals" />
+        android:weightSum="2"
+        tools:ignore="InvalidId">
 
-    <Button
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/hospital_nearby_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/location_text_field"
+            android:onClick="onClick"
+            android:text="Hospitals" />
 
-        android:layout_weight="1"
-        android:id="@+id/pharmacy_nearby_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/location_text_field"
-        android:layout_toEndOf="@+id/hospital_nearby_button"
-        android:onClick="onClick"
-        android:text="Pharmacy" />
+        <Button
 
-</LinearLayout>
+            android:layout_weight="1"
+            android:id="@+id/pharmacy_nearby_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/location_text_field"
+            android:layout_toEndOf="@+id/hospital_nearby_button"
+            android:onClick="onClick"
+            android:text="Pharmacy" />
+
+    </LinearLayout>
 
 
 </RelativeLayout>

@@ -148,37 +148,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         switch(v.getId())
         {
-            case R.id.search_nearby_button:
-                EditText tf_location =  findViewById(R.id.location_text_field);
-                String location = tf_location.getText().toString();
-                List<Address> addressList;
 
-
-                if(!location.equals(""))
-                {
-                    Geocoder geocoder = new Geocoder(this);
-
-                    try {
-                        addressList = geocoder.getFromLocationName(location, 5);
-
-                        if(addressList != null)
-                        {
-                            for(int i = 0;i<addressList.size();i++)
-                            {
-                                LatLng latLng = new LatLng(addressList.get(i).getLatitude() , addressList.get(i).getLongitude());
-                                MarkerOptions markerOptions = new MarkerOptions();
-                                markerOptions.position(latLng);
-                                markerOptions.title(location);
-                                mMap.addMarker(markerOptions);
-                                mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                                mMap.animateCamera(CameraUpdateFactory.zoomTo(20));
-                            }
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-                break;
             case R.id.hospital_nearby_button:
                 mMap.clear();
                 String hospital = "hospital";
